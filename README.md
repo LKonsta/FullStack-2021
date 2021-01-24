@@ -2,4 +2,4 @@
 
 This is the fullstack course for Helsinki university.
 
--[Week-0](https://github.com/LKonsta/FullStack-2021/part-0/report.md)
+-[Week-0](https://github.com/LKonsta/FullStack-2021/blob/main/part-0/report.md)
