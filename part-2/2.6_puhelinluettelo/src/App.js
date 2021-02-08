@@ -1,20 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const App = () => {
-  const [ persons, setPersons] = useState([
-    { name: 'Arto Hellas', number: '040-123456', id: 1 },
-    { name: 'Ada Lovelace', number: '39-44-5323523', id: 2 },
-    { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
-    { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
-  ]) 
+  const [ persons, setPersons] = useState([]) 
+
+  useEffect(() => {
+    console.log('effect')
+    axios
+    .get('http://localhost:3001/persons')
+    .then(response => {
+      console.log('promise fulfilled')
+      setPersons(response.data)
+    })
+  }, [])
+  console.log('render', persons.length, 'notes')
+
   const [ newName, setNewName ] = useState('')
 
   const [ newNumber, setNewNumber ] = useState('')
 
   const [ currentFilter, setCurrentFilter] = useState('')
 
-  const addPerson = (event) => {      
-    console.log('button clicked', event.target)
+  const addPerson = (event) => {
     var taken = 0
     persons.forEach(function(item,index,array) {
       if (newName === item.name) {
@@ -41,17 +48,14 @@ const App = () => {
   }
 
   const handleNameChange = (event) => {
-    console.log(event.target.value)
     setNewName(event.target.value)  
   }
 
   const handleNumberChange = (event) => {
-    console.log(event.target.value)
     setNewNumber(event.target.value)  
   }
   
   const handleNameFilter = (event) => {
-    console.log(event.target.value)
     setCurrentFilter(event.target.value)
   }
 
@@ -73,6 +77,8 @@ const App = () => {
       <h3>Numbers</h3>
 
       <Persons persons={persons} filter={currentFilter}/>
+
+
     </div>
   )
 }
