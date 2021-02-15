@@ -7,3 +7,5 @@ This is the fullstack course for Helsinki university.
 -[Week-1](https://github.com/LKonsta/FullStack-2021/blob/main/part-1)
 
 -[Week-2](https://github.com/LKonsta/FullStack-2021/blob/main/part-2)
+
+-[Week-3](https://github.com/LKonsta/Fullstack2021_part3)
